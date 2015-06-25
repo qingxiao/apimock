@@ -1,0 +1,44 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'adduser' ]
+2 info using npm@1.4.3
+3 info using node@v0.10.26
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 verbose adduser before first PUT { name: 'x372563572',
+5 verbose adduser   salt: 'XXXXX',
+5 verbose adduser   password_sha: 'XXXXX',
+5 verbose adduser   email: '350932784@163.com',
+5 verbose adduser   _id: 'org.couchdb.user:x372563572',
+5 verbose adduser   type: 'user',
+5 verbose adduser   roles: [],
+5 verbose adduser   date: '2015-06-25T16:37:45.674Z' }
+6 verbose url raw /-/user/org.couchdb.user:x372563572
+7 verbose url resolving [ 'https://registry.npmjs.org/',
+7 verbose url resolving   './-/user/org.couchdb.user:x372563572' ]
+8 verbose url resolved https://registry.npmjs.org/-/user/org.couchdb.user:x372563572
+9 info trying registry request attempt 1 at 00:37:45
+10 http PUT https://registry.npmjs.org/-/user/org.couchdb.user:x372563572
+11 http 400 https://registry.npmjs.org/-/user/org.couchdb.user:x372563572
+12 verbose adduser back [ [Error: Unknown error while authenticating : -/user/org.couchdb.user:x372563572],
+12 verbose adduser   { ok: false, error: 'Unknown error while authenticating' },
+12 verbose adduser   '{"ok":false,"error":"Unknown error while authenticating"}' ]
+13 error Error: Unknown error while authenticating : -/user/org.couchdb.user:x372563572
+13 error     at RegClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:237:14)
+13 error     at Request.self.callback (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:123:22)
+13 error     at Request.EventEmitter.emit (events.js:98:17)
+13 error     at Request.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:893:14)
+13 error     at Request.EventEmitter.emit (events.js:117:20)
+13 error     at IncomingMessage.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:844:12)
+13 error     at IncomingMessage.EventEmitter.emit (events.js:117:20)
+13 error     at _stream_readable.js:920:16
+13 error     at process._tickCallback (node.js:415:13)
+14 error If you need help, you may report this *entire* log,
+14 error including the npm and node versions, at:
+14 error     <http://github.com/npm/npm/issues>
+15 error System Windows_NT 6.2.9200
+16 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "adduser"
+17 error cwd F:\mywork\apimock
+18 error node -v v0.10.26
+19 error npm -v 1.4.3
+20 verbose exit [ 1, true ]
