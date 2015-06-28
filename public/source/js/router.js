@@ -1,7 +1,5 @@
 import Router from 'director';
 import React from 'react';
-import Header from 'components/header';
-import Homepage from 'components/homepage'
 import {ButtonToolbar,Button} from 'react-bootstrap';
 
 var routes = {

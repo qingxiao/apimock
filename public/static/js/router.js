@@ -1,4 +1,4 @@
-define(['exports', 'module', 'director', 'react', 'components/header', 'components/homepage', 'react-bootstrap'], function (exports, module, _director, _react, _componentsHeader, _componentsHomepage, _reactBootstrap) {
+define(['exports', 'module', 'director', 'react', 'react-bootstrap'], function (exports, module, _director, _react, _reactBootstrap) {
     'use strict';
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -6,10 +6,6 @@ define(['exports', 'module', 'director', 'react', 'components/header', 'componen
     var _Router = _interopRequireDefault(_director);
 
     var _React = _interopRequireDefault(_react);
-
-    var _Header = _interopRequireDefault(_componentsHeader);
-
-    var _Homepage = _interopRequireDefault(_componentsHomepage);
 
     var routes = {
         '/': function _() {
