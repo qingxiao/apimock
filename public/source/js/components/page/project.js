@@ -2,20 +2,15 @@
  * Created by kyle on 2015/6/29.
  */
 import React from 'react';
-import {
-    Panel,
-    Button,
-    ButtonToolbar
-} from 'react-bootstrap';
+import Index from 'components/page/index';
 
 var IndexPage = React.createClass({
+    getInitialState: function() {
+        return {porjectId:'abc'};
+    },
     render:function(){
         "use strict";
-        return <Panel header='APi'>
-            <ButtonToolbar>
-                <Button href='#'>Default</Button>
-            </ButtonToolbar>
-        </Panel>;
+        return <Index projectId={this.state.porjectId}/>;
     }
 });
 

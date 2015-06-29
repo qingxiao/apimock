@@ -1,4 +1,4 @@
-define(['exports', 'module', 'react', 'react-bootstrap'], function (exports, module, _react, _reactBootstrap) {
+define(['exports', 'module', 'react', 'components/page/index'], function (exports, module, _react, _componentsPageIndex) {
     /**
      * Created by kyle on 2015/6/29.
      */
@@ -8,24 +8,17 @@ define(['exports', 'module', 'react', 'react-bootstrap'], function (exports, mod
 
     var _React = _interopRequireDefault(_react);
 
+    var _Index = _interopRequireDefault(_componentsPageIndex);
+
     var IndexPage = _React['default'].createClass({
         displayName: 'IndexPage',
 
+        getInitialState: function getInitialState() {
+            return { porjectId: 'abc' };
+        },
         render: function render() {
             'use strict';
-            return _React['default'].createElement(
-                _reactBootstrap.Panel,
-                { header: 'APi' },
-                _React['default'].createElement(
-                    _reactBootstrap.ButtonToolbar,
-                    null,
-                    _React['default'].createElement(
-                        _reactBootstrap.Button,
-                        { href: '#' },
-                        'Default'
-                    )
-                )
-            );
+            return _React['default'].createElement(_Index['default'], { projectId: this.state.porjectId });
         }
     });
 
