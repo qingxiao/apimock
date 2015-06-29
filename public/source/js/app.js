@@ -7,7 +7,8 @@ requirejs.config({
         'react':'lib/react',
         'react-bootstrap':'lib/react-bootstrap',
         'react-router':'lib/ReactRouter',
-        'director':'lib/director'
+        'director':'lib/director',
+        'reflux':'lib/reflux'
     },
     shim:{
         director:{

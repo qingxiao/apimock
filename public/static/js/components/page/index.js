@@ -1,4 +1,4 @@
-define(['exports', 'module', 'react', 'react-bootstrap'], function (exports, module, _react, _reactBootstrap) {
+define(['exports', 'module', 'react', 'stores/project', 'react-bootstrap'], function (exports, module, _react, _storesProject, _reactBootstrap) {
     /**
      * Created by kyle on 2015/6/29.
      */
@@ -11,12 +11,28 @@ define(['exports', 'module', 'react', 'react-bootstrap'], function (exports, mod
     var IndexPage = _React['default'].createClass({
         displayName: 'IndexPage',
 
+        getInitialState: function getInitialState() {
+
+            return {
+                list: []
+            };
+        },
+        componentDidMount: function componentDidMount() {
+            'use strict';
+
+            var _this = this;
+
+            _storesProject.ProjectStore.listen(function (data) {
+                return _this.setState(data);
+            });
+            this.getList();
+        },
         render: function render() {
             'use strict';
-            console.log(this.props);
+            function preventDefault() {};
             return _React['default'].createElement(
                 _reactBootstrap.Panel,
-                { header: 'APi' },
+                { header: 'Projects' },
                 _React['default'].createElement(
                     _reactBootstrap.ButtonToolbar,
                     null,
@@ -26,24 +42,33 @@ define(['exports', 'module', 'react', 'react-bootstrap'], function (exports, mod
                         'All'
                     ),
                     _React['default'].createElement(
-                        _reactBootstrap.Button,
-                        { bsStyle: 'primary', bsSize: 'small', className: 'pull-right', onClick: this.createProject },
-                        'New'
-                    ),
-                    _React['default'].createElement(
                         _reactBootstrap.ButtonToolbar,
                         null,
-                        _React['default'].createElement(
-                            _reactBootstrap.Button,
-                            { bsStyle: 'primary', bsSize: 'small', href: '#/project/project1',
-                                className: this.props.projectId == 'abc' ? 'active' : '' },
-                            'Project1'
-                        ),
-                        _React['default'].createElement(
-                            _reactBootstrap.Button,
-                            { bsStyle: 'primary', bsSize: 'small', href: '#/project/project2' },
-                            'Project2'
-                        )
+                        this.state.list.map(function (item) {
+                            var newProjectApiUrl = '#/project/' + item.id + '/api';
+                            return _React['default'].createElement(
+                                _reactBootstrap.SplitButton,
+                                { title: item.name, bsSize: 'small',
+                                    className: this.props.projectId == 'abc' ? 'active' : '' },
+                                _React['default'].createElement(
+                                    _reactBootstrap.MenuItem,
+                                    { onSelect: preventDefault, href: newProjectApiUrl },
+                                    'New API'
+                                ),
+                                _React['default'].createElement(
+                                    _reactBootstrap.MenuItem,
+                                    {
+                                        onClick: this.deleteProject.bind(this, item.id) },
+                                    'Delete'
+                                )
+                            );
+                        }, this)
+                    ),
+                    _React['default'].createElement(
+                        _reactBootstrap.Button,
+                        { bsStyle: 'primary', bsSize: 'small',
+                            onClick: this.createProject },
+                        'Create'
                     )
                 ),
                 _React['default'].createElement('br', null),
@@ -59,22 +84,27 @@ define(['exports', 'module', 'react', 'react-bootstrap'], function (exports, mod
                             _React['default'].createElement(
                                 'th',
                                 null,
-                                '#'
+                                '序号'
                             ),
                             _React['default'].createElement(
                                 'th',
                                 null,
-                                'First Name'
+                                '名称'
                             ),
                             _React['default'].createElement(
                                 'th',
                                 null,
-                                'Last Name'
+                                'URL'
                             ),
                             _React['default'].createElement(
                                 'th',
                                 null,
-                                'Username'
+                                '开发者'
+                            ),
+                            _React['default'].createElement(
+                                'th',
+                                null,
+                                '操作'
                             )
                         )
                     ),
@@ -103,6 +133,15 @@ define(['exports', 'module', 'react', 'react-bootstrap'], function (exports, mod
                                 'td',
                                 null,
                                 '@mdo'
+                            ),
+                            _React['default'].createElement(
+                                'td',
+                                null,
+                                _React['default'].createElement(
+                                    _reactBootstrap.Button,
+                                    { bsStyle: 'link', bsSize: 'xsmall', href: '#/api/edit' },
+                                    'Edit'
+                                )
                             )
                         ),
                         _React['default'].createElement(
@@ -127,6 +166,11 @@ define(['exports', 'module', 'react', 'react-bootstrap'], function (exports, mod
                                 'td',
                                 null,
                                 '@fat'
+                            ),
+                            _React['default'].createElement(
+                                'td',
+                                null,
+                                '@fat'
                             )
                         ),
                         _React['default'].createElement(
@@ -139,8 +183,18 @@ define(['exports', 'module', 'react', 'react-bootstrap'], function (exports, mod
                             ),
                             _React['default'].createElement(
                                 'td',
-                                { colSpan: '2' },
+                                null,
                                 'Larry the Bird'
+                            ),
+                            _React['default'].createElement(
+                                'td',
+                                null,
+                                '@twitter'
+                            ),
+                            _React['default'].createElement(
+                                'td',
+                                null,
+                                '@twitter'
                             ),
                             _React['default'].createElement(
                                 'td',
@@ -154,6 +208,17 @@ define(['exports', 'module', 'react', 'react-bootstrap'], function (exports, mod
         },
         createProject: function createProject() {
             'use strict';
+            var name = window.prompt('请输入项目名');
+            this.getList();
+        },
+        deleteProject: function deleteProject(projectId) {
+            'use strict';
+            alert('delete');
+            _storesProject.ProjectActions['delete'](projectId);
+        },
+        getList: function getList() {
+            'use strict';
+            _storesProject.ProjectActions.list();
         }
 
     });
