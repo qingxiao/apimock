@@ -209,11 +209,10 @@ define(['exports', 'module', 'react', 'stores/project', 'react-bootstrap'], func
         createProject: function createProject() {
             'use strict';
             var name = window.prompt('请输入项目名');
-            this.getList();
+            _storesProject.ProjectActions.create(name);
         },
         deleteProject: function deleteProject(projectId) {
             'use strict';
-            alert('delete');
             _storesProject.ProjectActions['delete'](projectId);
         },
         getList: function getList() {

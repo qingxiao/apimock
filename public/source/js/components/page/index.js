@@ -90,11 +90,10 @@ var IndexPage = React.createClass({
     createProject: function () {
         "use strict";
         var name = window.prompt('请输入项目名');
-        this.getList();
+        ProjectActions.create(name);
     },
     deleteProject: function (projectId) {
         "use strict";
-        alert('delete');
         ProjectActions.delete(projectId);
     },
     getList: function () {
