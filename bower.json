@@ -19,6 +19,7 @@
     "bootstrap": "~3.3.5",
     "react-router": "~0.13.3",
     "director": "~1.2.8",
-    "reflux": "~0.2.8"
+    "reflux": "~0.2.8",
+    "reqwest": "~1.1.5"
   }
 }
