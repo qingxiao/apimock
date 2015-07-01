@@ -7,26 +7,34 @@ var routes = {
         "use strict";
         pageTo('index');
     },
-    '/project/:pid':function(projectId){
+    '/project/:pid':function(projectId) {
         "use strict";
-        pageTo('project', projectId);
+        pageTo('index', {projectId:projectId});
     }
 
 };
 
 
-function pageTo(...opt){
-    var page = opt.shift();
+function pageTo(page, options){
     var pkg = 'components/page/'+page;
     requirejs([pkg], function(Page){
         "use strict";
-        React.render(<Page/>, document.body);
+        React.render(<Page {...options}/>, document.body);
     });
 }
 
 
-var router = Router(routes);
-router.init();
-router.setRoute('/');
+var router = new Router(routes);
+router.configure({
+
+    notfound:function(){
+        "use strict";
+        pageTo('index');
+    }
+});
+router.init('/');
+
+
+
 
 export default router;

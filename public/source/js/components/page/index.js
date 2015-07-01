@@ -2,7 +2,8 @@
  * Created by kyle on 2015/6/29.
  */
 import React from 'react';
-import {ProjectActions, ProjectStore} from 'stores/project'
+import {ProjectActions, ProjectStore} from 'stores/project';
+import router from 'router';
 import {
     Panel,
     Button,
@@ -26,18 +27,22 @@ var IndexPage = React.createClass({
     },
     render: function () {
         "use strict";
-        function preventDefault() {};
         return <Panel header='Projects'>
             <ButtonToolbar>
                 <Button href='#' bsSize='small'>All</Button>
 
                 <ButtonToolbar>
                     {this.state.list.map(function (item) {
-                        var newProjectApiUrl = '#/project/' + item.id + '/api';
+                        var projectUrl = '#/project/' + item.id;
+                        var newProjectApiUrl = projectUrl + '/api';
+                        var active = {};
+                        if(this.props.projectId == item.id){
+                            active.active = true;
+                        }
                         return (
-                            <SplitButton title={item.name} bsSize='small'
-                                         className={this.props.projectId == 'abc'?'active':''}>
-                                <MenuItem onSelect={preventDefault} href={newProjectApiUrl}>New API</MenuItem>
+                            <SplitButton title={item.name} bsSize='small' href={projectUrl} {...active}>
+                                <MenuItem onSelect={this.addApi} href={newProjectApiUrl}>New API</MenuItem>
+                                <MenuItem divider/>
                                 <MenuItem
                                           onClick={this.deleteProject.bind(this, item.id)}>Delete</MenuItem>
                             </SplitButton>
@@ -99,6 +104,10 @@ var IndexPage = React.createClass({
     getList: function () {
         "use strict";
         ProjectActions.list();
+    },
+    addApi:function(eventKey, href, target){
+        "use strict";
+        router.setRoute(href);
     }
 
 });

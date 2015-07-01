@@ -14,27 +14,28 @@ define(['exports', 'module', 'director', 'react', 'react-bootstrap'], function (
         },
         '/project/:pid': function projectPid(projectId) {
             'use strict';
-            pageTo('project', projectId);
+            pageTo('index', { projectId: projectId });
         }
 
     };
 
-    function pageTo() {
-        for (var _len = arguments.length, opt = Array(_len), _key = 0; _key < _len; _key++) {
-            opt[_key] = arguments[_key];
-        }
-
-        var page = opt.shift();
+    function pageTo(page, options) {
         var pkg = 'components/page/' + page;
         requirejs([pkg], function (Page) {
             'use strict';
-            _React['default'].render(_React['default'].createElement(Page, null), document.body);
+            _React['default'].render(_React['default'].createElement(Page, options), document.body);
         });
     }
 
-    var router = (0, _Router['default'])(routes);
-    router.init();
-    router.setRoute('/');
+    var router = new _Router['default'](routes);
+    router.configure({
+
+        notfound: function notfound() {
+            'use strict';
+            pageTo('index');
+        }
+    });
+    router.init('/');
 
     module.exports = router;
 });
