@@ -4,30 +4,84 @@
 import Reflux from 'reflux';
 import reqwest from 'reqwest';
 
-var ProjectActions = Reflux.createActions([
+var ApiActions = Reflux.createActions([
     "list",
+    "edit",
+    "save",
     "create",
     "delete"
 ]);
 
-var ProjectStore = Reflux.createStore({
-    listenables:ProjectActions,
-    onList:function(){
+var ApiStore = Reflux.createStore({
+    listenables:ApiActions,
+    onList:function(projectId){
         "use strict";
         reqwest({
-            url:'/projects',
+            url:'/projects/'+projectId+'/api',
             method:'get',
             type:'json',
             success:function(res){
-                this.trigger({list:res.data});
-
+                if(res.status == 0){
+                    this.trigger({apis:res.data});
+                }
             }.bind(this)
         });
     },
-    onCreate:function(name){
+    onEdit:function(projectId, apiId){
         "use strict";
         reqwest({
-            url:'/projects',
+            url:'/projects/'+projectId+'/api/'+apiId,
+            method:'get',
+            type:'json',
+            success:function(res){
+                if(res.status == 0){
+                    this.trigger(res.data);
+                }
+            }.bind(this)
+        });
+    },
+    onCreate:function(projectId, data){
+        "use strict";
+        reqwest({
+            url:'/projects/'+projectId+'/api',
+            method:'post',
+            type:'json',
+            data:data,
+            success:function(res){
+                if(res.status == 0){
+                    alert('success');
+                    this.trigger('saveSuccess');
+                }else{
+                    alert(res.msg);
+                }
+            }.bind(this)
+        });
+    },
+    onSave:function(projectId, apiId, data){
+        if(projectId && !apiId){
+           this.onCreate(projectId, data);
+            return;
+        }
+        "use strict";
+        reqwest({
+            url:'/projects/'+projectId+'/api/'+apiId,
+            method:'post',
+            type:'json',
+            data:data,
+            success:function(res){
+                if(res.status == 0){
+                    alert('success');
+                    this.trigger('saveSuccess');
+                }else{
+                    alert(res.msg);
+                }
+            }.bind(this)
+        });
+    },
+    onDelete:function(){
+        "use strict";
+        reqwest({
+            url:'/projects/'+projectId+'/api/'+apiId,
             method:'post',
             type:'json',
             data:{
@@ -35,22 +89,6 @@ var ProjectStore = Reflux.createStore({
             },
             success:function(res){
                 if(res.status == 0){
-                    this.onList();
-                }else{
-                    alert(res.msg);
-                }
-            }.bind(this)
-        });
-    },
-    onDelete:function(id){
-        "use strict";
-        reqwest({
-            url:'/projects/'+id,
-            method:'delete',
-            type:'json',
-            success:function(res){
-                if(res.status == 0){
-                    this.onList();
                 }else{
                     alert(res.msg);
                 }
@@ -59,4 +97,4 @@ var ProjectStore = Reflux.createStore({
     }
 });
 
-export {ProjectActions, ProjectStore};
+export {ApiActions, ApiStore};

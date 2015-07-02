@@ -2,114 +2,89 @@
  * Created by kyle on 2015/6/29.
  */
 import React from 'react';
-import {ProjectActions, ProjectStore} from 'stores/project';
+import {ApiActions,ApiStore} from 'stores/api';
 import router from 'router';
 import {
     Panel,
     Button,
     ButtonToolbar,
-    Table,
-    SplitButton,
-    MenuItem
+    Grid,
+    Row,
+    Col,
+    FormControls,
+    Input
 } from 'react-bootstrap';
 
-var IndexPage = React.createClass({
+var ApiEditPage = React.createClass({
     getInitialState: function () {
-
-        return {
-            list: []
-        };
+        return {name: 'api name'};
     },
     componentDidMount: function () {
         "use strict";
-        ProjectStore.listen(data => this.setState(data));
-        this.getList();
+        ApiStore.listen(data => {
+            if (data == 'saveSuccess') {
+                this.onSaved();
+            } else {
+                this.setState(data)
+
+            }
+        });
+
+        var apiId = this.props.apiId;
+        var projectId = this.props.projectId;
+        if (apiId) {
+            this.getData(projectId, apiId);
+        }
     },
+
     render: function () {
         "use strict";
-        return <Panel header='Projects'>
-            <ButtonToolbar>
-                <Button href='#' bsSize='small'>All</Button>
-
-                <ButtonToolbar>
-                    {this.state.list.map(function (item) {
-                        var projectUrl = '#/project/' + item.id;
-                        var newProjectApiUrl = projectUrl + '/api';
-                        var active = {};
-                        if(this.props.projectId == item.id){
-                            active.active = true;
-                        }
-                        return (
-                            <SplitButton title={item.name} bsSize='small' href={projectUrl} {...active}>
-                                <MenuItem onSelect={this.addApi} href={newProjectApiUrl}>New API</MenuItem>
-                                <MenuItem divider/>
-                                <MenuItem
-                                          onClick={this.deleteProject.bind(this, item.id)}>Delete</MenuItem>
-                            </SplitButton>
-                        );
-                    }, this)}
-                </ButtonToolbar>
-                <Button bsStyle='primary' bsSize='small'
-                        onClick={this.createProject}>Create</Button>
-
-            </ButtonToolbar>
-            <br/>
-            <Table striped bordered condensed hover>
-                <thead>
-                <tr>
-                    <th>序号</th>
-                    <th>名称</th>
-                    <th>URL</th>
-                    <th>开发者</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>
-                        <Button bsStyle='link' bsSize='xsmall' href='#/api/edit'>Edit</Button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td >Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                </tr>
-                </tbody>
-            </Table>
+        var header = this.props.apiId ? 'New Api' : 'Edit Api';
+        var projectUrl = '#/project/' + this.props.projectId;
+        this._projectUrl = projectUrl;
+        return <Panel header={header}>
+            <form className="form-horizontal">
+                <Input type='text' label='Api名称' labelClassName='col-md-2'
+                       wrapperClassName='col-md-8' value={this.state.name} name='name' onChange={this.handleChange}/>
+                <Input type='text' label='URL' labelClassName='col-md-2'
+                       wrapperClassName='col-md-8' value={this.state.url} name='url' onChange={this.handleChange}/>
+                <Input type='text' label='开发者' labelClassName='col-md-2'
+                       wrapperClassName='col-md-8' value={this.state.developer} name='developer'
+                       onChange={this.handleChange}/>
+                <Row>
+                    <Col md={4} mdOffset={2}>
+                        <ButtonToolbar>
+                            <Button bsStyle='primary' bsSize='small' onClick={this.onSave}>保存</Button>
+                            <Button bsStyle='warning' bsSize='small' href={projectUrl}>取消</Button>
+                        </ButtonToolbar>
+                    </Col>
+                </Row>
+            </form>
         </Panel>;
     },
-    createProject: function () {
+    //获取已有api数据
+    getData: function () {
         "use strict";
-        var name = window.prompt('请输入项目名');
-        ProjectActions.create(name);
+        var {projectId, apiId} = this.props;
+        ApiActions.edit(projectId, apiId);
     },
-    deleteProject: function (projectId) {
+    onSave: function () {
         "use strict";
-        ProjectActions.delete(projectId);
+        var {projectId, apiId} = this.props;
+        ApiActions.save(projectId, apiId, this.state);
     },
-    getList: function () {
+    //保存成功
+    onSaved: function () {
         "use strict";
-        ProjectActions.list();
+        router.setRoute(this._projectUrl.replace(/^#/, ''));
     },
-    addApi:function(eventKey, href, target){
+    //输入框改变之后修改state值
+    handleChange: function (event) {
         "use strict";
-        router.setRoute(href);
+        var target = event.target;
+        this.setState({[target.name]: target.value});
     }
 
 });
 
-export default IndexPage
+export default ApiEditPage;

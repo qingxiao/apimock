@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import {ProjectActions, ProjectStore} from 'stores/project';
+import {ApiActions, ApiStore} from 'stores/api';
 import router from 'router';
 import {
     Panel,
@@ -17,14 +18,20 @@ var IndexPage = React.createClass({
     getInitialState: function () {
 
         return {
-            list: []
+            projects: [],
+            apis:[]
         };
     },
     componentDidMount: function () {
         "use strict";
         ProjectStore.listen(data => this.setState(data));
+        ApiStore.listen(data => this.setState(data));
         this.getList();
+        console.log('diMount')
     },
+  /*  componentWillUpdate: function () {
+        "use strict";
+    },*/
     render: function () {
         "use strict";
         return <Panel header='Projects'>
@@ -32,7 +39,7 @@ var IndexPage = React.createClass({
                 <Button href='#' bsSize='small'>All</Button>
 
                 <ButtonToolbar>
-                    {this.state.list.map(function (item) {
+                    {this.state.projects.map(function (item) {
                         var projectUrl = '#/project/' + item.id;
                         var newProjectApiUrl = projectUrl + '/api';
                         var active = {};
@@ -65,29 +72,21 @@ var IndexPage = React.createClass({
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>
-                        <Button bsStyle='link' bsSize='xsmall' href='#/api/edit'>Edit</Button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td >Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                </tr>
+                {this.state.apis.map(function (item, idx) {
+                    var apiEditUrl = '#/project/' + item.projectId + '/api/'+ item.id;
+                    return (
+                        <tr>
+                            <td>{idx}</td>
+                            <td>{item.name}</td>
+                            <td>{item.url}</td>
+                            <td>{item.developer}</td>
+                            <td>
+                                <Button bsStyle='link' bsSize='xsmall' href={apiEditUrl}>Edit</Button>
+                            </td>
+                        </tr>
+                    );
+                }, this)}
+
                 </tbody>
             </Table>
         </Panel>;
@@ -104,10 +103,11 @@ var IndexPage = React.createClass({
     getList: function () {
         "use strict";
         ProjectActions.list();
+        ApiActions.list(this.props.projectId);
     },
     addApi:function(eventKey, href, target){
         "use strict";
-        router.setRoute(href);
+        router.setRoute(href.replace(/^#/, ''));
     }
 
 });

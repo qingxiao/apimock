@@ -25,7 +25,7 @@ define(['exports', 'reflux', 'reqwest'], function (exports, _reflux, _reqwest) {
                 method: 'get',
                 type: 'json',
                 success: (function (res) {
-                    this.trigger({ list: res.data });
+                    this.trigger({ projects: res.data });
                 }).bind(this)
             });
         },

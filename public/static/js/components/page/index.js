@@ -1,4 +1,4 @@
-define(['exports', 'module', 'react', 'stores/project', 'router', 'react-bootstrap'], function (exports, module, _react, _storesProject, _router, _reactBootstrap) {
+define(['exports', 'module', 'react', 'stores/project', 'stores/api', 'router', 'react-bootstrap'], function (exports, module, _react, _storesProject, _storesApi, _router, _reactBootstrap) {
     /**
      * Created by kyle on 2015/6/29.
      */
@@ -18,7 +18,8 @@ define(['exports', 'module', 'react', 'stores/project', 'router', 'react-bootstr
         getInitialState: function getInitialState() {
 
             return {
-                list: []
+                projects: [],
+                apis: []
             };
         },
         componentDidMount: function componentDidMount() {
@@ -29,8 +30,15 @@ define(['exports', 'module', 'react', 'stores/project', 'router', 'react-bootstr
             _storesProject.ProjectStore.listen(function (data) {
                 return _this.setState(data);
             });
+            _storesApi.ApiStore.listen(function (data) {
+                return _this.setState(data);
+            });
             this.getList();
+            console.log('diMount');
         },
+        /*  componentWillUpdate: function () {
+              "use strict";
+          },*/
         render: function render() {
             'use strict';
             return _React['default'].createElement(
@@ -47,7 +55,7 @@ define(['exports', 'module', 'react', 'stores/project', 'router', 'react-bootstr
                     _React['default'].createElement(
                         _reactBootstrap.ButtonToolbar,
                         null,
-                        this.state.list.map(function (item) {
+                        this.state.projects.map(function (item) {
                             var projectUrl = '#/project/' + item.id;
                             var newProjectApiUrl = projectUrl + '/api';
                             var active = {};
@@ -119,97 +127,42 @@ define(['exports', 'module', 'react', 'stores/project', 'router', 'react-bootstr
                     _React['default'].createElement(
                         'tbody',
                         null,
-                        _React['default'].createElement(
-                            'tr',
-                            null,
-                            _React['default'].createElement(
-                                'td',
-                                null,
-                                '1'
-                            ),
-                            _React['default'].createElement(
-                                'td',
-                                null,
-                                'Mark'
-                            ),
-                            _React['default'].createElement(
-                                'td',
-                                null,
-                                'Otto'
-                            ),
-                            _React['default'].createElement(
-                                'td',
-                                null,
-                                '@mdo'
-                            ),
-                            _React['default'].createElement(
-                                'td',
+                        this.state.apis.map(function (item, idx) {
+                            var apiEditUrl = '#/project/' + item.projectId + '/api/' + item.id;
+                            return _React['default'].createElement(
+                                'tr',
                                 null,
                                 _React['default'].createElement(
-                                    _reactBootstrap.Button,
-                                    { bsStyle: 'link', bsSize: 'xsmall', href: '#/api/edit' },
-                                    'Edit'
+                                    'td',
+                                    null,
+                                    idx
+                                ),
+                                _React['default'].createElement(
+                                    'td',
+                                    null,
+                                    item.name
+                                ),
+                                _React['default'].createElement(
+                                    'td',
+                                    null,
+                                    item.url
+                                ),
+                                _React['default'].createElement(
+                                    'td',
+                                    null,
+                                    item.developer
+                                ),
+                                _React['default'].createElement(
+                                    'td',
+                                    null,
+                                    _React['default'].createElement(
+                                        _reactBootstrap.Button,
+                                        { bsStyle: 'link', bsSize: 'xsmall', href: apiEditUrl },
+                                        'Edit'
+                                    )
                                 )
-                            )
-                        ),
-                        _React['default'].createElement(
-                            'tr',
-                            null,
-                            _React['default'].createElement(
-                                'td',
-                                null,
-                                '2'
-                            ),
-                            _React['default'].createElement(
-                                'td',
-                                null,
-                                'Jacob'
-                            ),
-                            _React['default'].createElement(
-                                'td',
-                                null,
-                                'Thornton'
-                            ),
-                            _React['default'].createElement(
-                                'td',
-                                null,
-                                '@fat'
-                            ),
-                            _React['default'].createElement(
-                                'td',
-                                null,
-                                '@fat'
-                            )
-                        ),
-                        _React['default'].createElement(
-                            'tr',
-                            null,
-                            _React['default'].createElement(
-                                'td',
-                                null,
-                                '3'
-                            ),
-                            _React['default'].createElement(
-                                'td',
-                                null,
-                                'Larry the Bird'
-                            ),
-                            _React['default'].createElement(
-                                'td',
-                                null,
-                                '@twitter'
-                            ),
-                            _React['default'].createElement(
-                                'td',
-                                null,
-                                '@twitter'
-                            ),
-                            _React['default'].createElement(
-                                'td',
-                                null,
-                                '@twitter'
-                            )
-                        )
+                            );
+                        }, this)
                     )
                 )
             );
@@ -226,10 +179,11 @@ define(['exports', 'module', 'react', 'stores/project', 'router', 'react-bootstr
         getList: function getList() {
             'use strict';
             _storesProject.ProjectActions.list();
+            _storesApi.ApiActions.list(this.props.projectId);
         },
         addApi: function addApi(eventKey, href, target) {
             'use strict';
-            _router2['default'].setRoute(href);
+            _router2['default'].setRoute(href.replace(/^#/, ''));
         }
 
     });

@@ -7,10 +7,10 @@ var path = require('path');
 
 
 var dirPath = process.cwd();
-var projectDBFile = path.join(dirPath, 'db', 'project.db');
+var dbFile = path.join(dirPath, 'db', 'project.db');
 
-var projectDB = new Datastore(projectDBFile);
-projectDB.loadDatabase();
+var db = new Datastore(dbFile);
+db.loadDatabase();
 
 module.exports = function (router) {
     "use strict";
@@ -18,26 +18,26 @@ module.exports = function (router) {
     router.route('/projects')
         //获取项目列表
         .get(function (req, res, next) {
-            projectDB.find({}, function (err, docs) {
+            db.find({}, function (err, docs) {
                 res.json({status:0,msg:'',data:docs}).end();
             });
         })
         //新建项目
         .post(function (req, res, next) {
             var name = req.param('name');
-            var id = md5(name).toString();
+            var id = md5(name).toString().substring(0, 6);
             var doc = {
                 id:id,
                 name:name
             };
-            projectDB.find({ id:id }, function (err, docs) {
+            db.find({ id:id }, function (err, docs) {
                 // docs is an array containing documents Mars, Earth, Jupiter
                 // If no document is found, docs is equal to []
 
                 if(docs.length > 0 ){
                     res.json({status:1,msg:'该项目已经存在',data:docs}).end();
                 }else{
-                    projectDB.insert(doc, function(err, newDoc){
+                    db.insert(doc, function(err, newDoc){
                         res.json({status:0,msg:'创建成功',data:newDoc}).end();
                     });
                 }
@@ -53,7 +53,7 @@ module.exports = function (router) {
         .delete(function (req, res, next) {
             var id = req.params.projectId;
             console.log(id);
-            projectDB.remove({ id: id }, {}, function (err, numRemoved) {
+            db.remove({ id: id }, {}, function (err, numRemoved) {
                 console.log(numRemoved)
                 // numRemoved = 1
                 if(numRemoved >=1 ){
