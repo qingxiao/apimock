@@ -21,10 +21,11 @@ module.exports = function (router) {
         //获取api列表
         .get(function (req, res, next) {
             var projectId = req.params.projectId;
-
+            console.log(213)
             db.find({projectId: projectId}, function (err, docs) {
                 // docs is an array containing documents Mars, Earth, Jupiter
                 // If no document is found, docs is equal to []
+                console.log(123);
                 res.json({status: 0, msg: '', data: docs}).end();
             })
         })
@@ -35,11 +36,11 @@ module.exports = function (router) {
             data.projectId = projectId;
             //根据name和projectId来创建id
             data.id = md5(data.name+projectId).toString().substring(0,6);
-
+            data.createTime = Date.now();
             db.find({ id:data.id }, function (err, docs) {
                 // docs is an array containing documents Mars, Earth, Jupiter
                 // If no document is found, docs is equal to []
-
+                if(err) console.log(err)
                 if(docs.length > 0 ){
                     res.json({status:1,msg:'该api已经存在',data:docs}).end();
                 }else{
