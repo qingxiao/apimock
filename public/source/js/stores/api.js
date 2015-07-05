@@ -14,8 +14,9 @@ var ApiActions = Reflux.createActions([
 
 var ApiStore = Reflux.createStore({
     listenables:ApiActions,
-    onList:function(projectId){
+    onList:function(projectId = 'all'){
         "use strict";
+
         reqwest({
             url:'/projects/'+projectId+'/api',
             method:'get',
@@ -65,7 +66,7 @@ var ApiStore = Reflux.createStore({
         "use strict";
         reqwest({
             url:'/projects/'+projectId+'/api/'+apiId,
-            method:'post',
+            method:'put',
             type:'json',
             data:data,
             success:function(res){
@@ -78,18 +79,21 @@ var ApiStore = Reflux.createStore({
             }.bind(this)
         });
     },
-    onDelete:function(){
+    onDelete:function(projectId, apiId){
         "use strict";
         reqwest({
             url:'/projects/'+projectId+'/api/'+apiId,
-            method:'post',
+            method:'delete',
             type:'json',
             data:{
                 name:name
             },
             success:function(res){
                 if(res.status == 0){
+                    alert('success');
+                    this.onList(projectId, apiId);
                 }else{
+
                     alert(res.msg);
                 }
             }.bind(this)

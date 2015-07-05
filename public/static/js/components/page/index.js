@@ -27,20 +27,25 @@ define(['exports', 'module', 'react', 'stores/project', 'stores/api', 'router', 
 
             var _this = this;
 
-            _storesProject.ProjectStore.listen(function (data) {
-                return _this.setState(data);
-            });
-            _storesApi.ApiStore.listen(function (data) {
+            //this.offProjectStore = ProjectStore.listen(data => this.setState(data));
+            this.offApiStore = _storesApi.ApiStore.listen(function (data) {
                 return _this.setState(data);
             });
             this.getList();
-            console.log('diMount');
         },
-        /*  componentWillUpdate: function () {
-              "use strict";
-          },*/
+        componentWillUnmount: function componentWillUnmount() {
+            'use strict';
+            this.offProjectStore();
+            this.offApiStore();
+        },
+        componentWillUpdate: function componentWillUpdate() {
+            'use strict';
+
+            //this.getList();
+        },
         render: function render() {
             'use strict';
+            console.log('render');
             return _React['default'].createElement(
                 _reactBootstrap.Panel,
                 { header: 'Projects' },
@@ -178,6 +183,7 @@ define(['exports', 'module', 'react', 'stores/project', 'stores/api', 'router', 
         },
         getList: function getList() {
             'use strict';
+            console.log(this.props);
             _storesProject.ProjectActions.list();
             _storesApi.ApiActions.list(this.props.projectId);
         },

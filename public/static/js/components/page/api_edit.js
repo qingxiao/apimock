@@ -23,7 +23,7 @@ define(['exports', 'module', 'react', 'stores/api', 'router', 'react-bootstrap']
 
             var _this = this;
 
-            _storesApi.ApiStore.listen(function (data) {
+            this.offApiStroe = _storesApi.ApiStore.listen(function (data) {
                 if (data == 'saveSuccess') {
                     _this.onSaved();
                 } else {
@@ -37,7 +37,10 @@ define(['exports', 'module', 'react', 'stores/api', 'router', 'react-bootstrap']
                 this.getData(projectId, apiId);
             }
         },
-
+        componentWillUnmount: function componentWillUnmount() {
+            'use strict';
+            this.offApiStroe();
+        },
         render: function render() {
             'use strict';
             var header = this.props.apiId ? 'New Api' : 'Edit Api';

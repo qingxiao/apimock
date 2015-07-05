@@ -6,12 +6,12 @@ var routes = {
     //首页
     '/':function(){
         "use strict";
-        pageTo('index');
+        pageTo('project/index');
     },
     //当前选中项目下的api列表
     '/project/:pid':function(projectId) {
         "use strict";
-        pageTo('index', {projectId:projectId});
+        pageTo('project/index', {projectId:projectId});
     },
     //新增api
     '/project/:pid/api':function(projectId) {
@@ -30,6 +30,9 @@ function pageTo(page, options){
     var pkg = 'components/page/'+page;
     requirejs([pkg], function(Page){
         "use strict";
+        console.log(options)
+        //todo
+       // React.unmountComponentAtNode(document.body);
         React.render(<Page {...options}/>, document.body);
     });
 }

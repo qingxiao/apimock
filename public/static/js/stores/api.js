@@ -18,8 +18,10 @@ define(['exports', 'reflux', 'reqwest'], function (exports, _reflux, _reqwest) {
 
     var ApiStore = _Reflux['default'].createStore({
         listenables: ApiActions,
-        onList: function onList(projectId) {
+        onList: function onList() {
             'use strict';
+
+            var projectId = arguments[0] === undefined ? 'all' : arguments[0];
             (0, _reqwest2['default'])({
                 url: '/projects/' + projectId + '/api',
                 method: 'get',
@@ -69,7 +71,7 @@ define(['exports', 'reflux', 'reqwest'], function (exports, _reflux, _reqwest) {
             'use strict';
             (0, _reqwest2['default'])({
                 url: '/projects/' + projectId + '/api/' + apiId,
-                method: 'post',
+                method: 'put',
                 type: 'json',
                 data: data,
                 success: (function (res) {
@@ -82,17 +84,21 @@ define(['exports', 'reflux', 'reqwest'], function (exports, _reflux, _reqwest) {
                 }).bind(this)
             });
         },
-        onDelete: function onDelete() {
+        onDelete: function onDelete(projectId, apiId) {
             'use strict';
             (0, _reqwest2['default'])({
                 url: '/projects/' + projectId + '/api/' + apiId,
-                method: 'post',
+                method: 'delete',
                 type: 'json',
                 data: {
                     name: name
                 },
                 success: (function (res) {
-                    if (res.status == 0) {} else {
+                    if (res.status == 0) {
+                        alert('success');
+                        this.onList(projectId, apiId);
+                    } else {
+
                         alert(res.msg);
                     }
                 }).bind(this)

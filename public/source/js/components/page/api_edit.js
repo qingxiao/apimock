@@ -21,7 +21,7 @@ var ApiEditPage = React.createClass({
     },
     componentDidMount: function () {
         "use strict";
-        ApiStore.listen(data => {
+        this.offApiStroe = ApiStore.listen(data => {
             if (data == 'saveSuccess') {
                 this.onSaved();
             } else {
@@ -36,7 +36,10 @@ var ApiEditPage = React.createClass({
             this.getData(projectId, apiId);
         }
     },
-
+    componentWillUnmount: function () {
+        "use strict";
+        this.offApiStroe();
+    },
     render: function () {
         "use strict";
         var header = this.props.apiId ? 'New Api' : 'Edit Api';
