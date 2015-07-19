@@ -16,12 +16,12 @@ var routes = {
     //新增api
     '/project/:pid/api':function(projectId) {
         "use strict";
-        pageTo('api_edit',  {projectId:projectId});
+        pageTo('api/api_edit',  {projectId:projectId});
     },
     //编辑api
     '/project/:pid/api/:apiId':function(projectId, apiId) {
         "use strict";
-        pageTo('api_edit',  {projectId:projectId, apiId:apiId});
+        pageTo('api/api_edit',  {projectId:projectId, apiId:apiId});
     }
 };
 

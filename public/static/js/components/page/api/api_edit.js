@@ -1,4 +1,4 @@
-define(['exports', 'module', 'react', 'stores/api', 'router', 'react-bootstrap'], function (exports, module, _react, _storesApi, _router, _reactBootstrap) {
+define(['exports', 'module', 'react', 'stores/api', 'router', './param_edit', 'react-bootstrap'], function (exports, module, _react, _storesApi, _router, _param_edit, _reactBootstrap) {
     /**
      * Created by kyle on 2015/6/29.
      */
@@ -11,6 +11,8 @@ define(['exports', 'module', 'react', 'stores/api', 'router', 'react-bootstrap']
     var _React = _interopRequireDefault(_react);
 
     var _router2 = _interopRequireDefault(_router);
+
+    var _ParameterListEdit = _interopRequireDefault(_param_edit);
 
     var ApiEditPage = _React['default'].createClass({
         displayName: 'ApiEditPage',
@@ -155,12 +157,12 @@ define(['exports', 'module', 'react', 'stores/api', 'router', 'react-bootstrap']
                         _React['default'].createElement(
                             'label',
                             { className: 'control-label  col-md-2' },
-                            '接口参数'
+                            '请求参数'
                         ),
                         _React['default'].createElement(
                             'div',
                             { className: 'col-md-8' },
-                            _React['default'].createElement(Paramlist, null)
+                            _React['default'].createElement(_ParameterListEdit['default'], null)
                         )
                     ),
                     _React['default'].createElement(_reactBootstrap.Input, { type: 'textarea', label: '返回字段', labelClassName: 'col-md-2',

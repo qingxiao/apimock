@@ -3,20 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="aeeabb73-e510-46a6-b29d-54ee5ec2eee7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/api.db" afterPath="$PROJECT_DIR$/db/api.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/api.js" afterPath="$PROJECT_DIR$/routes/api.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/source/js/components/page/api_edit.js" afterPath="$PROJECT_DIR$/public/source/js/components/page/api_edit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/static/js/components/page/api_edit.js" afterPath="$PROJECT_DIR$/public/static/js/components/page/api_edit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/source/js/components/page/project/api_list.js" afterPath="$PROJECT_DIR$/public/source/js/components/page/project/api_list.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/static/js/components/page/project/api_list.js" afterPath="$PROJECT_DIR$/public/static/js/components/page/project/api_list.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/db.js" afterPath="$PROJECT_DIR$/lib/db.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/source/js/components/page/project/index.js" afterPath="$PROJECT_DIR$/public/source/js/components/page/project/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/static/js/components/page/project/index.js" afterPath="$PROJECT_DIR$/public/static/js/components/page/project/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/npm-debug.log" afterPath="$PROJECT_DIR$/npm-debug.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/project.db" afterPath="$PROJECT_DIR$/db/project.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/source/js/components/page/project/project_list.js" afterPath="$PROJECT_DIR$/public/source/js/components/page/project/project_list.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/static/js/components/page/project/project_list.js" afterPath="$PROJECT_DIR$/public/static/js/components/page/project/project_list.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/source/js/router.js" afterPath="$PROJECT_DIR$/public/source/js/router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/static/js/router.js" afterPath="$PROJECT_DIR$/public/static/js/router.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="F:\mywork\apimock\public\source\js\components\page\api_edit.js" afterPath="$PROJECT_DIR$/public/source/js/components/page/api/api_edit.js" />
     </list>
     <ignored path="apimock.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,16 +36,28 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding>
+                <marker date="1436799982815" expanded="true" signature="667:809" placeholder="&lt;xml/&gt;" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="project_list.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/source/js/components/page/project/project_list.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="project_list.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/source/js/components/page/project/project_list.js">
+      <file leaf-file-name="api.db" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/api.db">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.026666667">
-              <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="144" selection-start-line="0" selection-start-column="138" selection-end-line="0" selection-end-column="144" />
               <folding />
             </state>
           </provider>
@@ -62,7 +68,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="62" column="44" selection-start-line="62" selection-start-column="44" selection-end-line="62" selection-end-column="44" />
-              <folding />
+              <folding>
+                <marker date="1436719802564" expanded="true" signature="969:2556" placeholder="&lt;xml/&gt;" />
+                <marker date="1436719802564" expanded="true" signature="1046:1478" placeholder="&lt;xml/&gt;" />
+                <marker date="1436719802564" expanded="true" signature="1066:1457" placeholder="&lt;xml/&gt;" />
+                <marker date="1436719802564" expanded="true" signature="1491:2539" placeholder="&lt;xml/&gt;" />
+                <marker date="1436719802564" expanded="true" signature="1684:2476" placeholder="&lt;xml/&gt;" />
+                <marker date="1436719802564" expanded="true" signature="1994:2450" placeholder="&lt;xml/&gt;" />
+                <marker date="1436719802564" expanded="true" signature="2027:2420" placeholder="&lt;xml/&gt;" />
+                <marker date="1436719802564" expanded="true" signature="2230:2375" placeholder="&lt;xml/&gt;" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -78,40 +93,40 @@
         </entry>
       </file>
       <file leaf-file-name="api_edit.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/source/js/components/page/api_edit.js">
+        <entry file="file://$PROJECT_DIR$/public/source/js/components/page/api/api_edit.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="99" column="24" selection-start-line="99" selection-start-column="24" selection-end-line="99" selection-end-column="24" />
+              <caret line="111" column="44" selection-start-line="111" selection-start-column="25" selection-end-line="111" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="api.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/api.js">
+      <file leaf-file-name="param_edit.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/source/js/components/page/api/param_edit.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+              <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="project.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/project.js">
+      <file leaf-file-name="npm-debug.log" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/npm-debug.log">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="46" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.6187291">
+              <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="project.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/source/js/stores/project.js">
+      <file leaf-file-name="router.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/source/js/router.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="28" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="28" />
+              <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -121,7 +136,7 @@
         <entry file="file://$PROJECT_DIR$/lib/db.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="166" column="16" selection-start-line="166" selection-start-column="16" selection-end-line="166" selection-end-column="16" />
+              <caret line="137" column="13" selection-start-line="137" selection-start-column="4" selection-end-line="137" selection-end-column="13" />
               <folding>
                 <element signature="e#0#39#0" expanded="false" />
               </folding>
@@ -172,17 +187,19 @@
         <option value="$PROJECT_DIR$/public/source/js/components/project/project_list.js" />
         <option value="$PROJECT_DIR$/public/source/js/components/project/api_list.js" />
         <option value="$PROJECT_DIR$/public/source/js/components/project/index.js" />
-        <option value="$PROJECT_DIR$/public/source/js/router.js" />
         <option value="$PROJECT_DIR$/public/source/js/stores/api.js" />
         <option value="$PROJECT_DIR$/routes/project.js" />
         <option value="$PROJECT_DIR$/db/api.db" />
-        <option value="$PROJECT_DIR$/npm-debug.log" />
         <option value="$PROJECT_DIR$/routes/api.js" />
         <option value="$PROJECT_DIR$/public/source/js/components/page/project/api_list.js" />
         <option value="$PROJECT_DIR$/public/source/js/components/page/project/index.js" />
-        <option value="$PROJECT_DIR$/public/source/js/components/page/api_edit.js" />
-        <option value="$PROJECT_DIR$/lib/db.js" />
         <option value="$PROJECT_DIR$/public/source/js/components/page/project/project_list.js" />
+        <option value="$PROJECT_DIR$/lib/db.js" />
+        <option value="$PROJECT_DIR$/public/source/js/components/page/api_edit.js" />
+        <option value="$PROJECT_DIR$/public/source/js/router.js" />
+        <option value="$PROJECT_DIR$/public/source/js/components/page/api/api_edit.js" />
+        <option value="$PROJECT_DIR$/public/source/js/components/page/api/param_edit.js" />
+        <option value="$PROJECT_DIR$/npm-debug.log" />
       </list>
     </option>
   </component>
@@ -557,6 +574,10 @@
               <option name="myItemId" value="page" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -588,7 +609,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="project" />
+              <option name="myItemId" value="api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -670,6 +691,7 @@
       <recent name="F:\mywork\apimock\public\source\js\lib" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\mywork\apimock\public\source\js\components\page\api" />
       <recent name="F:\mywork\apimock\public\source\js\components\page" />
       <recent name="F:\mywork\apimock\public\source\js\components" />
       <recent name="F:\mywork\apimock\public\source\js" />
@@ -737,19 +759,19 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32869378" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32939914" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -794,13 +816,6 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db/project.db">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/source/js/lib/reflux.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1061,32 +1076,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/npm-debug.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/project.db">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/api.db">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/source/js/stores/api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="29" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1118,23 +1111,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="62" column="44" selection-start-line="62" selection-start-column="44" selection-end-line="62" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/source/js/router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69899666">
-          <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/source/js/components/page/api_edit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="99" column="24" selection-start-line="99" selection-start-column="24" selection-end-line="99" selection-end-column="24" />
-          <folding />
+          <folding>
+            <marker date="1436719802564" expanded="true" signature="969:2556" placeholder="&lt;xml/&gt;" />
+            <marker date="1436719802564" expanded="true" signature="1046:1478" placeholder="&lt;xml/&gt;" />
+            <marker date="1436719802564" expanded="true" signature="1066:1457" placeholder="&lt;xml/&gt;" />
+            <marker date="1436719802564" expanded="true" signature="1491:2539" placeholder="&lt;xml/&gt;" />
+            <marker date="1436719802564" expanded="true" signature="1684:2476" placeholder="&lt;xml/&gt;" />
+            <marker date="1436719802564" expanded="true" signature="1994:2450" placeholder="&lt;xml/&gt;" />
+            <marker date="1436719802564" expanded="true" signature="2027:2420" placeholder="&lt;xml/&gt;" />
+            <marker date="1436719802564" expanded="true" signature="2230:2375" placeholder="&lt;xml/&gt;" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1142,6 +1128,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <marker date="1436799982815" expanded="true" signature="667:809" placeholder="&lt;xml/&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/source/js/components/page/project/project_list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/source/js/stores/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="29" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1149,17 +1153,49 @@
     <entry file="file://$PROJECT_DIR$/lib/db.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="166" column="16" selection-start-line="166" selection-start-column="16" selection-end-line="166" selection-end-column="16" />
+          <caret line="137" column="13" selection-start-line="137" selection-start-column="4" selection-end-line="137" selection-end-column="13" />
           <folding>
             <element signature="e#0#39#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/source/js/components/page/project/project_list.js">
+    <entry file="file://$PROJECT_DIR$/db/api.db">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.026666667">
-          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="144" selection-start-line="0" selection-start-column="138" selection-end-line="0" selection-end-column="144" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/source/js/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/source/js/components/page/api/api_edit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="111" column="44" selection-start-line="111" selection-start-column="25" selection-end-line="111" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/source/js/components/page/api/param_edit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/npm-debug.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6187291">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
           <folding />
         </state>
       </provider>

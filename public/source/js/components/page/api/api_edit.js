@@ -4,6 +4,7 @@
 import React from 'react';
 import {ApiActions,ApiStore} from 'stores/api';
 import router from 'router';
+import ParameterListEdit from './param_edit';
 import {
     Panel,
     Button,
@@ -98,9 +99,12 @@ var ApiEditPage = React.createClass({
                     <option value='delete'>delete</option>
                     <option value='update'>update</option>
                 </Input>
-                <Input type='textarea' label='接口参数' labelClassName='col-md-2'
-                       wrapperClassName='col-md-8' value={this.state.request} name='description'
-                       onChange={this.handleChange}/>
+                <div className='form-group'>
+                    <label className='control-label  col-md-2'>请求参数</label>
+                    <div className='col-md-8'>
+                        <ParameterListEdit/>
+                    </div>
+                </div>
                 <Input type='textarea' label='返回字段' labelClassName='col-md-2'
                        wrapperClassName='col-md-8' value={this.state.response} name='description'
                        onChange={this.handleChange}/>
