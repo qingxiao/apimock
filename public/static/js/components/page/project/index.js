@@ -1,4 +1,4 @@
-define(['exports', 'module', 'react', 'stores/api', 'react-bootstrap', './project_list', './api_list'], function (exports, module, _react, _storesApi, _reactBootstrap, _project_list, _api_list) {
+define(['exports', 'module', 'react', 'stores/api', 'stores/project', 'react-bootstrap', './project_list', './api_list'], function (exports, module, _react, _storesApi, _storesProject, _reactBootstrap, _project_list, _api_list) {
     /**
      * Created by kyle on 2015/6/29.
      */

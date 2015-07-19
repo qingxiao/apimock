@@ -17,7 +17,7 @@ module.exports = function (router) {
                 .then(function (docs) {
                     res.json({status: 0, msg: '', data: docs}).end();
                 }, function (err) {
-                    res.json({status: 1, msg: msg, data: {}}).end();
+                    res.json({status: 1, msg: err, data: {}}).end();
                 });
         })
         //新建api
@@ -26,7 +26,11 @@ module.exports = function (router) {
             var doc = req.body;
             doc.projectId = projectId;
             doc.createTime = Date.now();
-            db.createApi(doc)
+            db.findProjectName(projectId).then(function (name) {
+                doc.projectName = name;
+                console.log(name)
+                return db.createApi(doc);
+            })
                 .then(function (newDoc) {
                     res.json({status: 0, msg: '创建成功', data: newDoc}).end();
                 },
@@ -64,7 +68,7 @@ module.exports = function (router) {
             var apiId = req.params.apiId;
 
             db.deleteApi(apiId)
-            .then(function (newDoc) {
+                .then(function (newDoc) {
                     res.json({status: 0, msg: '删除成功', data: newDoc}).end();
                 },
                 function (err) {

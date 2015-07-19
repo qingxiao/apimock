@@ -17,7 +17,7 @@ import {
 
 var ApiEditPage = React.createClass({
     getInitialState: function () {
-        return {name: 'api name'};
+        return {name: '', projectName:''};
     },
     componentDidMount: function () {
         "use strict";
@@ -40,31 +40,7 @@ var ApiEditPage = React.createClass({
         "use strict";
         this.offApiStroe();
     },
-    render: function () {
-        "use strict";
-        var header = this.props.apiId ? 'New Api' : 'Edit Api';
-        var projectUrl = '#/project/' + this.props.projectId;
-        this._projectUrl = projectUrl;
-        return <Panel header={header}>
-            <form className="form-horizontal">
-                <Input type='text' label='Api名称' labelClassName='col-md-2'
-                       wrapperClassName='col-md-8' value={this.state.name} name='name' onChange={this.handleChange}/>
-                <Input type='text' label='URL' labelClassName='col-md-2'
-                       wrapperClassName='col-md-8' value={this.state.url} name='url' onChange={this.handleChange}/>
-                <Input type='text' label='开发者' labelClassName='col-md-2'
-                       wrapperClassName='col-md-8' value={this.state.developer} name='developer'
-                       onChange={this.handleChange}/>
-                <Row>
-                    <Col md={4} mdOffset={2}>
-                        <ButtonToolbar>
-                            <Button bsStyle='primary' bsSize='small' onClick={this.onSave}>保存</Button>
-                            <Button bsStyle='warning' bsSize='small' href={projectUrl}>取消</Button>
-                        </ButtonToolbar>
-                    </Col>
-                </Row>
-            </form>
-        </Panel>;
-    },
+
     //获取已有api数据
     getData: function () {
         "use strict";
@@ -86,6 +62,58 @@ var ApiEditPage = React.createClass({
         "use strict";
         var target = event.target;
         this.setState({[target.name]: target.value});
+    },
+    render: function () {
+        "use strict";
+        var header = this.props.apiId ? 'Edit Api' : 'New Api';
+        var projectUrl = '#/project/' + this.props.projectId;
+        this._projectUrl = projectUrl;
+        return <Panel header={header}>
+            <form className="form-horizontal">
+                <FormControls.Static type='text' label='项目名称' labelClassName='col-md-2'
+                       wrapperClassName='col-md-8' value={this.state.projectName} />
+                <Input type='text' label='接口名称' labelClassName='col-md-2'
+                       wrapperClassName='col-md-8' value={this.state.name} name='name' onChange={this.handleChange}/>
+                <Input type='text' label='接口URL' labelClassName='col-md-2'
+                       wrapperClassName='col-md-8' value={this.state.url} name='url' onChange={this.handleChange}/>
+                <Input type='text' label='开发者' labelClassName='col-md-2'
+                       wrapperClassName='col-md-8' value={this.state.developer} name='developer'
+                       onChange={this.handleChange}/>
+                <Input type='textarea' label='接口描述' labelClassName='col-md-2'
+                       wrapperClassName='col-md-8' value={this.state.description} name='description'
+                       onChange={this.handleChange}/>
+                <div className='form-group'>
+                    <label className='control-label  col-md-2'>数据类型</label>
+                    <div className='col-md-8'>
+                        <label className='radio-inline'><input type='radio' name='dataType' value='json'/>json</label>
+                        <label className='radio-inline'><input type='radio' name='dataType' value='text'/>text</label>
+                    </div>
+                </div>
+                <Input type='select' label='接口类型'  labelClassName='col-md-2'
+                       wrapperClassName='col-md-8' value={this.state.type} name='type'
+                       onChange={this.handleChange}>
+                    <option value='get'>get</option>
+                    <option value='post'>post</option>
+                    <option value='put'>put</option>
+                    <option value='delete'>delete</option>
+                    <option value='update'>update</option>
+                </Input>
+                <Input type='textarea' label='接口参数' labelClassName='col-md-2'
+                       wrapperClassName='col-md-8' value={this.state.request} name='description'
+                       onChange={this.handleChange}/>
+                <Input type='textarea' label='返回字段' labelClassName='col-md-2'
+                       wrapperClassName='col-md-8' value={this.state.response} name='description'
+                       onChange={this.handleChange}/>
+                <Row>
+                    <Col md={4} mdOffset={2}>
+                        <ButtonToolbar>
+                            <Button bsStyle='primary' bsSize='small' onClick={this.onSave}>保存</Button>
+                            <Button bsStyle='warning' bsSize='small' href={projectUrl}>取消</Button>
+                        </ButtonToolbar>
+                    </Col>
+                </Row>
+            </form>
+        </Panel>;
     }
 
 });

@@ -42,13 +42,24 @@ define(['exports', 'module', 'react', 'stores/project', '../../../router', 'reac
         render: function render() {
             'use strict';
             return _React['default'].createElement(
-                _reactBootstrap.ButtonToolbar,
+                'div',
                 null,
                 _React['default'].createElement(
-                    _reactBootstrap.Button,
-                    { href: '#', bsSize: 'small' },
-                    'All'
+                    _reactBootstrap.ButtonToolbar,
+                    null,
+                    _React['default'].createElement(
+                        _reactBootstrap.Button,
+                        { href: '#', bsSize: 'small' },
+                        '总览'
+                    ),
+                    _React['default'].createElement(
+                        _reactBootstrap.Button,
+                        { bsStyle: 'primary', bsSize: 'small',
+                            onClick: this.createProject },
+                        '新建项目'
+                    )
                 ),
+                _React['default'].createElement('hr', null),
                 _React['default'].createElement(
                     _reactBootstrap.ButtonToolbar,
                     null,
@@ -65,30 +76,24 @@ define(['exports', 'module', 'react', 'stores/project', '../../../router', 'reac
                             _React['default'].createElement(
                                 _reactBootstrap.MenuItem,
                                 { onSelect: this.addApi, href: newProjectApiUrl },
-                                'New API'
+                                '新建接口'
                             ),
                             _React['default'].createElement(_reactBootstrap.MenuItem, { divider: true }),
                             _React['default'].createElement(
                                 _reactBootstrap.MenuItem,
                                 {
                                     onClick: this.deleteProject.bind(this, item.id) },
-                                'Delete'
+                                '删除接口'
                             )
                         );
                     }, this)
-                ),
-                _React['default'].createElement(
-                    _reactBootstrap.Button,
-                    { bsStyle: 'primary', bsSize: 'small',
-                        onClick: this.createProject },
-                    'Create'
                 )
             );
         },
         createProject: function createProject() {
             'use strict';
             var name = window.prompt('请输入项目名');
-            _storesProject.ProjectActions.create(name);
+            name && _storesProject.ProjectActions.create(name);
         },
         deleteProject: function deleteProject(projectId) {
             'use strict';

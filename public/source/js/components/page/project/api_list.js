@@ -36,15 +36,18 @@ var ApiList = React.createClass({
     render: function () {
         "use strict";
         console.log('render apilist ', this.props)
+        var inlineBlockStyle = {display:'inline-block'};
 
-        return <Table striped bordered condensed hover>
+        return <Table striped bordered condensed hover className="text-center">
             <thead>
             <tr>
-                <th>序号</th>
-                <th>名称</th>
-                <th>URL</th>
-                <th>开发者</th>
-                <th>操作</th>
+                <th className="text-center">序号</th>
+                <th className="text-center">名称</th>
+                <th className="text-center">项目名</th>
+                <th className="text-center">URL</th>
+                <th className="text-center">开发者</th>
+                <th className="text-center">创建时间</th>
+                <th className="text-center">操作</th>
             </tr>
             </thead>
             <tbody>
@@ -54,11 +57,16 @@ var ApiList = React.createClass({
                     <tr>
                         <td>{idx}</td>
                         <td>{item.name}</td>
+                        <td>{item.projectName}</td>
                         <td>{item.url}</td>
                         <td>{item.developer}</td>
+                        <td>{item.createTime}</td>
                         <td>
-                            <Button bsStyle='primary' bsSize='xsmall' href={apiEditUrl}>Edit</Button>
-                            <Button bsStyle='warning' bsSize='xsmall' onClick={this.onDeleteItem.bind(this, item.id)} >Delete</Button>
+                            <ButtonToolbar className='text-center' style={inlineBlockStyle}>
+                                <Button bsStyle='primary' bsSize='xsmall' href={apiEditUrl}>Edit</Button>
+                                <Button bsStyle='warning' bsSize='xsmall'
+                                        onClick={this.onDeleteItem.bind(this, item.id)}>Delete</Button>
+                            </ButtonToolbar>
                         </td>
                     </tr>
                 );

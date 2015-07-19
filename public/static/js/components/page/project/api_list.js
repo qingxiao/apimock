@@ -39,10 +39,11 @@ define(['exports', 'module', 'react', 'stores/api', 'react-bootstrap'], function
         render: function render() {
             'use strict';
             console.log('render apilist ', this.props);
+            var inlineBlockStyle = { display: 'inline-block' };
 
             return _React['default'].createElement(
                 _reactBootstrap.Table,
-                { striped: true, bordered: true, condensed: true, hover: true },
+                { striped: true, bordered: true, condensed: true, hover: true, className: 'text-center' },
                 _React['default'].createElement(
                     'thead',
                     null,
@@ -51,27 +52,37 @@ define(['exports', 'module', 'react', 'stores/api', 'react-bootstrap'], function
                         null,
                         _React['default'].createElement(
                             'th',
-                            null,
+                            { className: 'text-center' },
                             '序号'
                         ),
                         _React['default'].createElement(
                             'th',
-                            null,
+                            { className: 'text-center' },
                             '名称'
                         ),
                         _React['default'].createElement(
                             'th',
-                            null,
+                            { className: 'text-center' },
+                            '项目名'
+                        ),
+                        _React['default'].createElement(
+                            'th',
+                            { className: 'text-center' },
                             'URL'
                         ),
                         _React['default'].createElement(
                             'th',
-                            null,
+                            { className: 'text-center' },
                             '开发者'
                         ),
                         _React['default'].createElement(
                             'th',
-                            null,
+                            { className: 'text-center' },
+                            '创建时间'
+                        ),
+                        _React['default'].createElement(
+                            'th',
+                            { className: 'text-center' },
                             '操作'
                         )
                     )
@@ -97,6 +108,11 @@ define(['exports', 'module', 'react', 'stores/api', 'react-bootstrap'], function
                             _React['default'].createElement(
                                 'td',
                                 null,
+                                item.projectName
+                            ),
+                            _React['default'].createElement(
+                                'td',
+                                null,
                                 item.url
                             ),
                             _React['default'].createElement(
@@ -107,15 +123,25 @@ define(['exports', 'module', 'react', 'stores/api', 'react-bootstrap'], function
                             _React['default'].createElement(
                                 'td',
                                 null,
+                                item.createTime
+                            ),
+                            _React['default'].createElement(
+                                'td',
+                                null,
                                 _React['default'].createElement(
-                                    _reactBootstrap.Button,
-                                    { bsStyle: 'primary', bsSize: 'xsmall', href: apiEditUrl },
-                                    'Edit'
-                                ),
-                                _React['default'].createElement(
-                                    _reactBootstrap.Button,
-                                    { bsStyle: 'warning', bsSize: 'xsmall', onClick: this.onDeleteItem.bind(this, item.id) },
-                                    'Delete'
+                                    _reactBootstrap.ButtonToolbar,
+                                    { className: 'text-center', style: inlineBlockStyle },
+                                    _React['default'].createElement(
+                                        _reactBootstrap.Button,
+                                        { bsStyle: 'primary', bsSize: 'xsmall', href: apiEditUrl },
+                                        'Edit'
+                                    ),
+                                    _React['default'].createElement(
+                                        _reactBootstrap.Button,
+                                        { bsStyle: 'warning', bsSize: 'xsmall',
+                                            onClick: this.onDeleteItem.bind(this, item.id) },
+                                        'Delete'
+                                    )
                                 )
                             )
                         );

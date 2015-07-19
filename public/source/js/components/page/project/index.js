@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import {ApiActions, ApiStore} from 'stores/api';
+import {ProjectActions, ProjectStore} from 'stores/project';
 import {
     Panel,
     Button,

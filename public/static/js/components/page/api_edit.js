@@ -16,7 +16,7 @@ define(['exports', 'module', 'react', 'stores/api', 'router', 'react-bootstrap']
         displayName: 'ApiEditPage',
 
         getInitialState: function getInitialState() {
-            return { name: 'api name' };
+            return { name: '', projectName: '' };
         },
         componentDidMount: function componentDidMount() {
             'use strict';
@@ -41,49 +41,7 @@ define(['exports', 'module', 'react', 'stores/api', 'router', 'react-bootstrap']
             'use strict';
             this.offApiStroe();
         },
-        render: function render() {
-            'use strict';
-            var header = this.props.apiId ? 'New Api' : 'Edit Api';
-            var projectUrl = '#/project/' + this.props.projectId;
-            this._projectUrl = projectUrl;
-            return _React['default'].createElement(
-                _reactBootstrap.Panel,
-                { header: header },
-                _React['default'].createElement(
-                    'form',
-                    { className: 'form-horizontal' },
-                    _React['default'].createElement(_reactBootstrap.Input, { type: 'text', label: 'Api名称', labelClassName: 'col-md-2',
-                        wrapperClassName: 'col-md-8', value: this.state.name, name: 'name', onChange: this.handleChange }),
-                    _React['default'].createElement(_reactBootstrap.Input, { type: 'text', label: 'URL', labelClassName: 'col-md-2',
-                        wrapperClassName: 'col-md-8', value: this.state.url, name: 'url', onChange: this.handleChange }),
-                    _React['default'].createElement(_reactBootstrap.Input, { type: 'text', label: '开发者', labelClassName: 'col-md-2',
-                        wrapperClassName: 'col-md-8', value: this.state.developer, name: 'developer',
-                        onChange: this.handleChange }),
-                    _React['default'].createElement(
-                        _reactBootstrap.Row,
-                        null,
-                        _React['default'].createElement(
-                            _reactBootstrap.Col,
-                            { md: 4, mdOffset: 2 },
-                            _React['default'].createElement(
-                                _reactBootstrap.ButtonToolbar,
-                                null,
-                                _React['default'].createElement(
-                                    _reactBootstrap.Button,
-                                    { bsStyle: 'primary', bsSize: 'small', onClick: this.onSave },
-                                    '保存'
-                                ),
-                                _React['default'].createElement(
-                                    _reactBootstrap.Button,
-                                    { bsStyle: 'warning', bsSize: 'small', href: projectUrl },
-                                    '取消'
-                                )
-                            )
-                        )
-                    )
-                )
-            );
-        },
+
         //获取已有api数据
         getData: function getData() {
             'use strict';
@@ -111,6 +69,116 @@ define(['exports', 'module', 'react', 'stores/api', 'router', 'react-bootstrap']
             'use strict';
             var target = event.target;
             this.setState(_defineProperty({}, target.name, target.value));
+        },
+        render: function render() {
+            'use strict';
+            var header = this.props.apiId ? 'Edit Api' : 'New Api';
+            var projectUrl = '#/project/' + this.props.projectId;
+            this._projectUrl = projectUrl;
+            return _React['default'].createElement(
+                _reactBootstrap.Panel,
+                { header: header },
+                _React['default'].createElement(
+                    'form',
+                    { className: 'form-horizontal' },
+                    _React['default'].createElement(_reactBootstrap.FormControls.Static, { type: 'text', label: '项目名称', labelClassName: 'col-md-2',
+                        wrapperClassName: 'col-md-8', value: this.state.projectName }),
+                    _React['default'].createElement(_reactBootstrap.Input, { type: 'text', label: '接口名称', labelClassName: 'col-md-2',
+                        wrapperClassName: 'col-md-8', value: this.state.name, name: 'name', onChange: this.handleChange }),
+                    _React['default'].createElement(_reactBootstrap.Input, { type: 'text', label: '接口URL', labelClassName: 'col-md-2',
+                        wrapperClassName: 'col-md-8', value: this.state.url, name: 'url', onChange: this.handleChange }),
+                    _React['default'].createElement(_reactBootstrap.Input, { type: 'text', label: '开发者', labelClassName: 'col-md-2',
+                        wrapperClassName: 'col-md-8', value: this.state.developer, name: 'developer',
+                        onChange: this.handleChange }),
+                    _React['default'].createElement(_reactBootstrap.Input, { type: 'textarea', label: '接口描述', labelClassName: 'col-md-2',
+                        wrapperClassName: 'col-md-8', value: this.state.description, name: 'description',
+                        onChange: this.handleChange }),
+                    _React['default'].createElement(
+                        'div',
+                        { className: 'form-group' },
+                        _React['default'].createElement(
+                            'label',
+                            { className: 'control-label  col-md-2' },
+                            '数据类型'
+                        ),
+                        _React['default'].createElement(
+                            'div',
+                            { className: 'col-md-8' },
+                            _React['default'].createElement(
+                                'label',
+                                { className: 'radio-inline' },
+                                _React['default'].createElement('input', { type: 'radio', name: 'dataType', value: 'json' }),
+                                'json'
+                            ),
+                            _React['default'].createElement(
+                                'label',
+                                { className: 'radio-inline' },
+                                _React['default'].createElement('input', { type: 'radio', name: 'dataType', value: 'text' }),
+                                'text'
+                            )
+                        )
+                    ),
+                    _React['default'].createElement(
+                        _reactBootstrap.Input,
+                        { type: 'select', label: '接口类型', labelClassName: 'col-md-2',
+                            wrapperClassName: 'col-md-8', value: this.state.type, name: 'type',
+                            onChange: this.handleChange },
+                        _React['default'].createElement(
+                            'option',
+                            { value: 'get' },
+                            'get'
+                        ),
+                        _React['default'].createElement(
+                            'option',
+                            { value: 'post' },
+                            'post'
+                        ),
+                        _React['default'].createElement(
+                            'option',
+                            { value: 'put' },
+                            'put'
+                        ),
+                        _React['default'].createElement(
+                            'option',
+                            { value: 'delete' },
+                            'delete'
+                        ),
+                        _React['default'].createElement(
+                            'option',
+                            { value: 'update' },
+                            'update'
+                        )
+                    ),
+                    _React['default'].createElement(_reactBootstrap.Input, { type: 'textarea', label: '接口参数', labelClassName: 'col-md-2',
+                        wrapperClassName: 'col-md-8', value: this.state.request, name: 'description',
+                        onChange: this.handleChange }),
+                    _React['default'].createElement(_reactBootstrap.Input, { type: 'textarea', label: '返回字段', labelClassName: 'col-md-2',
+                        wrapperClassName: 'col-md-8', value: this.state.response, name: 'description',
+                        onChange: this.handleChange }),
+                    _React['default'].createElement(
+                        _reactBootstrap.Row,
+                        null,
+                        _React['default'].createElement(
+                            _reactBootstrap.Col,
+                            { md: 4, mdOffset: 2 },
+                            _React['default'].createElement(
+                                _reactBootstrap.ButtonToolbar,
+                                null,
+                                _React['default'].createElement(
+                                    _reactBootstrap.Button,
+                                    { bsStyle: 'primary', bsSize: 'small', onClick: this.onSave },
+                                    '保存'
+                                ),
+                                _React['default'].createElement(
+                                    _reactBootstrap.Button,
+                                    { bsStyle: 'warning', bsSize: 'small', href: projectUrl },
+                                    '取消'
+                                )
+                            )
+                        )
+                    )
+                )
+            );
         }
 
     });

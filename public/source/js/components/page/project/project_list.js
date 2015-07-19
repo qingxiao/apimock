@@ -35,9 +35,13 @@ var ProjcetList = React.createClass({
      },*/
     render: function () {
         "use strict";
-        return <ButtonToolbar>
-            <Button href='#' bsSize='small'>All</Button>
-
+        return <div>
+            <ButtonToolbar>
+                <Button href='#' bsSize='small'>总览</Button>
+                <Button bsStyle='primary' bsSize='small'
+                        onClick={this.createProject}>新建项目</Button>
+            </ButtonToolbar>
+            <hr/>
             <ButtonToolbar>
                 {this.state.projects.map(function (item) {
                     var projectUrl = '#/project/' + item.id;
@@ -48,24 +52,22 @@ var ProjcetList = React.createClass({
                     }
                     return (
                         <SplitButton title={item.name} bsSize='small' href={projectUrl} {...active}>
-                            <MenuItem onSelect={this.addApi} href={newProjectApiUrl}>New API</MenuItem>
+                            <MenuItem onSelect={this.addApi} href={newProjectApiUrl}>新建接口</MenuItem>
                             <MenuItem divider/>
                             <MenuItem
-                                onClick={this.deleteProject.bind(this, item.id)}>Delete</MenuItem>
+                                onClick={this.deleteProject.bind(this, item.id)}>删除接口</MenuItem>
                         </SplitButton>
                     );
                 }, this)}
-            </ButtonToolbar>
-            <Button bsStyle='primary' bsSize='small'
-                    onClick={this.createProject}>Create</Button>
 
-        </ButtonToolbar>;
+            </ButtonToolbar>
+        </div>;
 
     },
     createProject: function () {
         "use strict";
         var name = window.prompt('请输入项目名');
-        ProjectActions.create(name);
+        name && ProjectActions.create(name);
     },
     deleteProject: function (projectId) {
         "use strict";
