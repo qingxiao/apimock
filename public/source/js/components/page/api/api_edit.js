@@ -18,7 +18,7 @@ import {
 
 var ApiEditPage = React.createClass({
     getInitialState: function () {
-        return {name: '', projectName:''};
+        return {name: '', projectName:'', request:{}};
     },
     componentDidMount: function () {
         "use strict";
@@ -102,7 +102,7 @@ var ApiEditPage = React.createClass({
                 <div className='form-group'>
                     <label className='control-label  col-md-2'>请求参数</label>
                     <div className='col-md-8'>
-                        <ParameterListEdit/>
+                        <ParameterListEdit parentHandler={this.onRequestParamChange} defaultJSON={this.state.request}/>
                     </div>
                 </div>
                 <Input type='textarea' label='返回字段' labelClassName='col-md-2'
@@ -118,6 +118,10 @@ var ApiEditPage = React.createClass({
                 </Row>
             </form>
         </Panel>;
+    },
+    onRequestParamChange:function(data){
+        console.log(data, 'api_edit')
+        this.setState({request:data});
     }
 
 });

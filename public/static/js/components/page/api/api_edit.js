@@ -18,7 +18,7 @@ define(['exports', 'module', 'react', 'stores/api', 'router', './param_edit', 'r
         displayName: 'ApiEditPage',
 
         getInitialState: function getInitialState() {
-            return { name: '', projectName: '' };
+            return { name: '', projectName: '', request: {} };
         },
         componentDidMount: function componentDidMount() {
             'use strict';
@@ -162,7 +162,7 @@ define(['exports', 'module', 'react', 'stores/api', 'router', './param_edit', 'r
                         _React['default'].createElement(
                             'div',
                             { className: 'col-md-8' },
-                            _React['default'].createElement(_ParameterListEdit['default'], null)
+                            _React['default'].createElement(_ParameterListEdit['default'], { parentHandler: this.onRequestParamChange, defaultJSON: this.state.request })
                         )
                     ),
                     _React['default'].createElement(_reactBootstrap.Input, { type: 'textarea', label: '返回字段', labelClassName: 'col-md-2',
@@ -192,6 +192,10 @@ define(['exports', 'module', 'react', 'stores/api', 'router', './param_edit', 'r
                     )
                 )
             );
+        },
+        onRequestParamChange: function onRequestParamChange(data) {
+            console.log(data, 'api_edit');
+            this.setState({ request: data });
         }
 
     });

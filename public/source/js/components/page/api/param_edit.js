@@ -1,6 +1,8 @@
 /**
  * Created by kyle on 2015/7/19.
  */
+"use strict";
+
 import React from 'react';
 import {
     Row,
@@ -8,24 +10,64 @@ import {
     FormControls,
     Input
 } from 'react-bootstrap';
+import JSONEditor from 'plugins/jsoneditor/jsoneditor';
 
 var ParameterListEdit = React.createClass({
     getInitialState: function () {
-        "use strict";
         return {};
     },
     componentDidMount: function () {
-        "use strict";
-
+        this.initCodeEditor();
+        this.initTreeEditor();
     },
     componentWillUnmount: function () {
-        "use strict";
+    },
+    //dom 更新完成后do this
+    componentDidUpdate :function( nextProps,  nextState){
     },
     render:function(){
-        "use strict";
         return <Row>
-          <Col md={12} id='fuck'>fuck</Col>
+            <Col md={6} id='treeEditor'></Col>
+            <Col md={6} id='codeEditor'></Col>
         </Row>;
+    },
+    initCodeEditor:function(){
+        var options = {
+            "mode": "text",
+            "search": true,
+            change : function(){
+                var text = this.codeEditor.getText();
+                try{
+                    var data = JSON.parse(text);
+                    this.props.parentHandler(data);
+                    this.treeEditor.set(data);
+                }catch(e){
+
+                }
+            }.bind(this)
+        };
+        this.codeEditor = this.initJSONEditor('codeEditor', options);
+    },
+    initTreeEditor:function(){
+        var options = {
+            "mode": "tree",
+            change : function(){
+                var text = this.treeEditor.getText();
+                try{
+                    var data = JSON.parse(text);
+                    this.props.parentHandler(data);
+                    this.codeEditor.set(data);
+                }catch(e){
+
+                }
+            }.bind(this)
+        };
+        this.treeEditor = this.initJSONEditor('treeEditor', options);
+    },
+    initJSONEditor:function(domId, options){
+        var container = document.getElementById(domId);
+        var editor = new JSONEditor(container, options, this.props.defaultJSON);
+        return editor;
     }
 
 });
